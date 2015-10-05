@@ -1,0 +1,86 @@
+{
+    "key": "allseen-spunky",
+    "name": "Spunky",
+    "description": "Encourage users to collaborate, generate content with delight and boost the adoption through Gamification",
+    "vendor": {
+        "name": "AllSeen",
+        "url": "http://spunky-allseen.rhcloud.com"
+    },
+    "baseUrl": "{{localBaseUrl}}",
+    "links": {
+        "self": "{{localBaseUrl}}/atlassian-connect.json",
+        "homepage": "{{localBaseUrl}}/atlassian-connect.json"
+    },
+    "authentication": {
+        "type": "jwt"
+    },
+    "lifecycle": {
+        "installed": "/installed"
+    },
+    "scopes": [
+        "READ"
+    ],
+  "modules": {
+
+    "configurePage": {
+      "url": "/spunky-config",
+      "key": "spunky-configuration",
+      "name": {
+        "value": "Spunky Configuration"
+      },
+      "conditions": [{
+        "condition": "user_is_admin"
+      }]
+    },
+   
+    "webhooks": [
+      //Get all Confluence even
+      { "event": "attachment_created",          "url": "/event/attachment_created"        }
+    , { "event": "attachment_removed",          "url": "/event/attachment_removed"        }
+    , { "event": "attachment_updated",          "url": "/event/attachment_updated"        }
+    , { "event": "attachment_viewed",           "url": "/event/attachment_viewed"         }
+    , { "event": "blog_created",                "url": "/event/blog_created"              }
+    , { "event": "blog_removed",                "url": "/event/blog_removed"              }
+    , { "event": "blog_restored",               "url": "/event/blog_restored"             }
+    , { "event": "blog_trashed",                "url": "/event/blog_trashed"              }
+    , { "event": "blog_updated",                "url": "/event/blog_updated"              }
+    , { "event": "blog_viewed",                 "url": "/event/blog_viewed"               }
+    , { "event": "comment_created",             "url": "/event/comment_created"           }
+    , { "event": "comment_removed",             "url": "/event/comment_removed"           }
+    , { "event": "comment_updated",             "url": "/event/comment_updated"           }
+    , { "event": "group_created",               "url": "/event/group_created"             }
+    , { "event": "group_removed",               "url": "/event/group_removed"             }
+    , { "event": "label_added",                 "url": "/event/label_added"               }
+    , { "event": "label_created",               "url": "/event/label_created"             }
+    , { "event": "label_deleted",               "url": "/event/label_deleted"             }
+    , { "event": "label_removed",               "url": "/event/label_removed"             }
+    , { "event": "login",                       "url": "/event/login"                     }
+    , { "event": "login_failed",                "url": "/event/login_failed"              }
+    , { "event": "logout",                      "url": "/event/logout"                    }
+    , { "event": "page_children_reordered",     "url": "/event/page_children_reordered"   }
+    , { "event": "page_created",                "url": "/event/page_created"              }
+    , { "event": "page_moved",                  "url": "/event/page_moved"                }
+    , { "event": "page_removed",                "url": "/event/page_removed"              }
+    , { "event": "page_restored",               "url": "/event/page_restored"             }
+    , { "event": "page_trashed",                "url": "/event/page_trashed"              }
+    , { "event": "page_updated",                "url": "/event/page_updated"              }
+    , { "event": "page_viewed",                 "url": "/event/page_viewed"               }
+    , { "event": "search_performed",            "url": "/event/search_performed"          }
+    , { "event": "space_created",               "url": "/event/space_created"             }
+    , { "event": "space_logo_updated",          "url": "/event/space_logo_updated"        }
+    , { "event": "space_permissions_updated",   "url": "/event/space_permissions_updated" }
+    , { "event": "space_removed",               "url": "/event/space_removed"             }
+    , { "event": "space_updated",               "url": "/event/space_updated"             }
+    , { "event": "status_cleared",              "url": "/event/status_cleared"            }
+    , { "event": "status_created",              "url": "/event/status_created"            }
+    , { "event": "status_removed",              "url": "/event/status_removed"            }
+    , { "event": "user_created",                "url": "/event/user_created"              }
+    , { "event": "user_deactivated",            "url": "/event/user_deactivated"          }
+    , { "event": "user_followed",               "url": "/event/user_followed"             }
+    , { "event": "user_reactivated",            "url": "/event/user_reactivated"          }
+    , { "event": "user_removed",                "url": "/event/user_removed"              }
+    , { "event": "connect_addon_enabled",       "url": "/connectevent/connect_addon_enabled"              }
+    , { "event": "connect_addon_disabled",      "url": "/connectevent/connect_addon_disabled"              }
+    ]
+  }
+}
