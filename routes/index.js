@@ -21,14 +21,27 @@ module.exports = function (app, addon) {
     app.get('/spunky-config', addon.authenticate(), function (req, res) {
             // Rendering a template is easy; the `render()` method takes two params: name of template
             // and a json object to pass the context in
-            res.render('spunky-config', {
+
+            var pointsdata = [
+                {host: 'http://localhost:2990', action: 'create-a-page', text: "Create a page", point: '10'},
+                {host: 'http://localhost:2990', action: 'attachment_created', text: "Create a Attachment", point: '10'},
+                {host: 'http://localhost:2990', action: 'attachment_updated', text: "Update a Attachment", point: '5'},
+                {host: 'http://localhost:2990', action: 'blog_created', text: "Create a Blog", point: '20'}
+
+            ];
+            var data = {
+                pointsdata: pointsdata,
                 title: 'Spunky Configuration'
-                //issueId: req.query['issueId']
-            });
+            };
+            
+            res.render('spunky-config',data);
+
+
         }
     );
 
-    app.get('/spunky-config-submit', function (req, res) {
+
+    app.get('/spunky-config-submit', addon.authenticate(), function (req, res) {
             console.log("Configuration submit =====>>>>>");
             res.render('spunky-config', {
                 title: 'Spunky Configuration'

@@ -1,18 +1,46 @@
 {{!< layout}}
   <div class="aui-page-header-inner">
     <div class="aui-page-header-main intro-header">
-        <form class="aui" action="spunky-config-submit">
-            <div class="field-group">
-                <label for="text-input">Create a page<span class="aui-icon icon-required">required</span></label>
-                <input class="text" type="text" id="create-a-page" name="create-a-page" title="Create a page point" value="10">
-                <input class="checkbox" type="checkbox" name="active-create-a-page" id="active-create-a-page">
+        <div class="aui-tabs horizontal-tabs">
+            <ul class="tabs-menu">
+                <li class="menu-item active-tab">
+                    <a href="#configuration">Points Configuration</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#Medals">Medals</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#Badges">Badges</a>
+                </li>
+            </ul>
+            <div class="tabs-pane active-pane" id="configuration">
+                <br />
+                <form class="aui" action="spunky-config-submit">
+                    {{#each pointsdata}}
+                        <div class="field-group">
+                            <label for="text-input">{{this.text}}</label>
+                            <input class="text short-field " type="text" id="{{this.action}}" name="{{this.action}}" title="{{this.text}} point" value="{{this.point}}">
+                            <input class="checkbox" type="checkbox" name="active-create-a-page" id="active-create-a-page">
+                        </div>
+                    {{/each}}
+                    <br />
+                    <div class="buttons-container">
+                        <div class="buttons">
+                            <button class="aui-button aui-button-primary">Save</button>
+                            <a class="cancel" href="#">Reset to Default</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="buttons-container">
-                <div class="buttons">
-                    <input class="button submit" type="submit" value="Save" id="config-save-button">
-                    <a class="cancel" href="#">Reset to Default</a>
-                </div>
+            <div class="tabs-pane" id="Medals">
+                <h2>This is tab 2 for Medals</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
-        </form>
+            <div class="tabs-pane" id="Badges">
+                <h2>This is tab 3 for Badges</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
     </div>
   </div>
+
