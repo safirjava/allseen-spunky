@@ -16,6 +16,7 @@
             <div class="tabs-pane active-pane" id="configuration">
                 <br />
                 <form class="aui" action="spunky-config-submit">
+                    <input type="hidden" name="jwt" value="{{token}}">
                     {{#each pointsdata}}
                         <div class="field-group">
                             <label for="text-input">{{this.text}}</label>
@@ -32,10 +33,15 @@
                     </div>
                 </form>
             </div>
+
             <div class="tabs-pane" id="Medals">
-                <h2>This is tab 2 for Medals</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <span class="aui-avatar aui-avatar-xlarge">
+                    <span class="aui-avatar-inner">
+                        <img src="//docs.atlassian.com/aui/latest/docs/images/avatar-16.png">
+                     </span>
+                </span>
             </div>
+
             <div class="tabs-pane" id="Badges">
                 <h2>This is tab 3 for Badges</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

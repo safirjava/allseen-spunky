@@ -22,12 +22,22 @@ module.exports = function (app, addon) {
             // Rendering a template is easy; the `render()` method takes two params: name of template
             // and a json object to pass the context in
 
-            var pointsdata = [
-                {host: 'http://localhost:2990', action: 'create-a-page', text: "Create a page", point: '10'},
-                {host: 'http://localhost:2990', action: 'attachment_created', text: "Create a Attachment", point: '10'},
-                {host: 'http://localhost:2990', action: 'attachment_updated', text: "Update a Attachment", point: '5'},
-                {host: 'http://localhost:2990', action: 'blog_created', text: "Create a Blog", point: '20'}
+            var baseUrl = req.query.xdm_e + req.query.cp;
+            console.log("BaseUrl ==>>"+baseUrl);
 
+            var pointsdata = [
+                {host: baseUrl, action: 'create-a-page', text: "Create a page", point: '10'},
+                {host: baseUrl, action: 'blog_created', text: "Create a Blog", point: '20'},
+                {host: baseUrl, action: 'comment_created', text: "Create a comment", point: '3'},
+                {host: baseUrl, action: 'label_added', text: "Label a page or blogpost", point: '3'},
+                {host: baseUrl, action: 'status_created', text: "Write a Status Update", point: '2'},
+                {host: baseUrl, action: 'following', text: "Follow someone", point: '2'},
+                {host: baseUrl, action: 'followed', text: "Someone is following you", point: '10'},
+                {host: baseUrl, action: 'space_created', text: "Create a Space", point: '20'},
+                {host: baseUrl, action: 'blog_updated', text: "Edit a blogpost", point: '3'},
+                {host: baseUrl, action: 'page_updated', text: "Edit a page", point: '3'},
+                {host: baseUrl, action: 'search_performed', text: "Search for Content", point: '1'},
+                {host: baseUrl, action: 'medel_receive', text: "Receive a medal", point: '30'}
             ];
             var data = {
                 pointsdata: pointsdata,
@@ -41,8 +51,11 @@ module.exports = function (app, addon) {
     );
 
 
-    app.get('/spunky-config-submit', addon.authenticate(), function (req, res) {
+    app.get('/spunky-config-submit', addon.checkValidToken(), function (req, res) {
             console.log("Configuration submit =====>>>>>");
+            var baseUrl = req.query.xdm_e + req.query.cp;
+            console.log("BaseUrl ==>>"+baseUrl);
+
             res.render('spunky-config', {
                 title: 'Spunky Configuration'
                 //issueId: req.query['issueId']
